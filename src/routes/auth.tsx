@@ -6,7 +6,7 @@ import { z } from "zod";
 import { Compass, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Field } from "@/modules/shell/Field";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
 import { bootstrapAdmin, needsBootstrap } from "@/modules/auth/auth.functions";
@@ -180,32 +180,5 @@ function BootstrapForm({ onDone }: { onDone: () => void }) {
         {busy && <Loader2 className="animate-spin" aria-hidden />} Criar administrador
       </Button>
     </form>
-  );
-}
-
-export function Field({
-  id,
-  label,
-  error,
-  hint,
-  children,
-}: {
-  id: string;
-  label: string;
-  error?: string;
-  hint?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="space-y-1.5">
-      <Label htmlFor={id}>{label}</Label>
-      {children}
-      {hint && !error && <p className="text-xs text-muted-foreground">{hint}</p>}
-      {error && (
-        <p className="text-xs font-medium text-destructive" role="alert">
-          {error}
-        </p>
-      )}
-    </div>
   );
 }
