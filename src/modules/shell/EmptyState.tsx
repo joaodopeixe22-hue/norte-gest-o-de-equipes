@@ -9,9 +9,9 @@ export function EmptyState({
 }: {
   icon: LucideIcon;
   title: string;
-  description?: string;
+  description?: string | undefined;
   action?: React.ReactNode;
-  compact?: boolean;
+  compact?: boolean | undefined;
 }) {
   return (
     <div className={`flex flex-col items-center text-center ${compact ? "py-6" : "py-14"}`}>

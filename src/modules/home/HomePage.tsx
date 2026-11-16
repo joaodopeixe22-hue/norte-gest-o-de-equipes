@@ -46,7 +46,7 @@ export function HomePage() {
     <div className="space-y-10 fade-up">
       <header className="flex items-center justify-between gap-4">
         <div>
-          <p className="eyebrow capitalize">{formatLongDate(today)}</p>
+          <p className="eyebrow first-letter:uppercase">{formatLongDate(today)}</p>
           <h1 className="mt-0.5 text-2xl font-bold tracking-tight sm:text-3xl">
             {greeting(hourSP())}, {first}
           </h1>
@@ -58,7 +58,7 @@ export function HomePage() {
 
       {/* Visão do dia */}
       <section aria-label="Visão do dia">
-        <dl className="grid grid-cols-2 gap-y-5 rounded-xl border border-border bg-surface px-5 py-4 shadow-soft sm:grid-cols-5 sm:divide-x sm:divide-border">
+        <dl className="grid grid-cols-2 gap-x-4 gap-y-5 sm:gap-x-0 rounded-xl border border-border bg-surface px-5 py-4 shadow-soft sm:grid-cols-5 sm:divide-x sm:divide-border">
           <Stat label="Meta do dia" value={dayKpi.isLoading ? null : `${goalPct}%`} hint="aprovado hoje" />
           <Stat label="Pontos no mês" value={summary.isLoading ? null : String(s?.month_points ?? 0)} />
           <Stat
@@ -101,7 +101,7 @@ export function HomePage() {
   );
 }
 
-function Stat({ label, value, hint }: { label: string; value: string | null; hint?: string }) {
+function Stat({ label, value, hint }: { label: string; value: string | null; hint?: string | undefined }) {
   return (
     <div className="px-0 sm:px-5 sm:first:pl-0">
       <dt className="eyebrow">{label}</dt>

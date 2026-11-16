@@ -58,7 +58,7 @@ export function TaskDialog({
     const v = parsed.data;
     try {
       await save.mutateAsync({
-        id: task?.id,
+        ...(task ? { id: task.id } : {}),
         values: {
           title: v.title,
           description: v.description || null,
@@ -85,7 +85,7 @@ export function TaskDialog({
             <DialogTitle>{task ? "Editar tarefa" : "Nova tarefa"}</DialogTitle>
             <DialogDescription>Defina o que precisa ser feito e quando.</DialogDescription>
           </DialogHeader>
-          <Field id="t-title" label="Título" error={errors.title}>
+          <Field id="t-title" label="Título" error={errors["title"]}>
             <Input id="t-title" name="title" defaultValue={task?.title} autoFocus />
           </Field>
           <Field id="t-desc" label="Descrição (opcional)">
@@ -119,7 +119,7 @@ export function TaskDialog({
             </Field>
           </div>
           {me?.isManager && (
-            <Field id="t-assignee" label="Responsável" error={errors.assigned_to}>
+            <Field id="t-assignee" label="Responsável" error={errors["assigned_to"]}>
               <Select value={assignee} onValueChange={setAssignee}>
                 <SelectTrigger id="t-assignee">
                   <SelectValue placeholder="Escolha a pessoa" />

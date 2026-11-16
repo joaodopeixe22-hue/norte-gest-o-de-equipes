@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { queryOptions, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { addDays, todaySP } from "@/lib/dates";
@@ -25,7 +26,9 @@ export const kpiDefinitionsQuery = queryOptions({
 
 export function useKpiDefinitions(activeOnly = true) {
   const q = useQuery(kpiDefinitionsQuery);
-  return { ...q, data: (q.data ?? []).filter((k) => !activeOnly || k.is_active) };
+  // Lista estável entre renders: quem usa em useEffect não pode receber um array novo a cada vez.
+  const data = useMemo(() => (q.data ?? []).filter((k) => !activeOnly || k.is_active), [q.data, activeOnly]);
+  return { ...q, data };
 }
 
 export function useKpiProgress(userId: string | undefined, start: string, end: string) {

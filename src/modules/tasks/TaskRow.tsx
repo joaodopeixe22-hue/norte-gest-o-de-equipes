@@ -7,10 +7,12 @@ export function TaskRow({
   task,
   onOpen,
   assigneeName,
+  trailing,
 }: {
   task: Task;
-  onOpen?: () => void;
-  assigneeName?: string | null;
+  onOpen?: (() => void) | undefined;
+  assigneeName?: string | null | undefined;
+  trailing?: React.ReactNode;
 }) {
   const toggle = useToggleTask();
   const done = task.status === "concluida";
@@ -54,6 +56,7 @@ export function TaskRow({
           {PRIORITY_LABEL[task.priority]}
         </span>
       )}
+      {trailing}
     </li>
   );
 }

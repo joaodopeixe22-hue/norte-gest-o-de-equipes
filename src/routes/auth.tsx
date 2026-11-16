@@ -15,7 +15,8 @@ import { errorMessage } from "@/lib/errors";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (s: Record<string, unknown>) => ({ inativo: typeof s.inativo === "string" ? s.inativo : undefined }),
+  validateSearch: (s: Record<string, unknown>): { inativo?: string } =>
+    typeof s["inativo"] === "string" ? { inativo: s["inativo"] } : {},
   head: () => ({
     meta: [
       { title: "Entrar — Norte" },
@@ -99,10 +100,10 @@ function LoginForm() {
         <h1 className="text-2xl font-bold">Entrar</h1>
         <p className="mt-1 text-sm text-muted-foreground">Use sua matrícula e senha.</p>
       </div>
-      <Field id="matricula" label="Matrícula" error={errors.matricula}>
+      <Field id="matricula" label="Matrícula" error={errors["matricula"]}>
         <Input id="matricula" name="matricula" autoComplete="username" autoFocus inputMode="text" />
       </Field>
-      <Field id="password" label="Senha" error={errors.password}>
+      <Field id="password" label="Senha" error={errors["password"]}>
         <Input id="password" name="password" type="password" autoComplete="current-password" />
       </Field>
       <Button type="submit" className="w-full" size="lg" disabled={busy}>
@@ -164,16 +165,16 @@ function BootstrapForm({ onDone }: { onDone: () => void }) {
           Primeiro acesso: crie a conta de administrador. Depois disso, esta tela deixa de existir.
         </p>
       </div>
-      <Field id="full_name" label="Nome completo" error={errors.full_name}>
+      <Field id="full_name" label="Nome completo" error={errors["full_name"]}>
         <Input id="full_name" name="full_name" autoComplete="name" autoFocus />
       </Field>
-      <Field id="matricula" label="Matrícula" error={errors.matricula}>
+      <Field id="matricula" label="Matrícula" error={errors["matricula"]}>
         <Input id="matricula" name="matricula" autoComplete="username" />
       </Field>
-      <Field id="password" label="Senha (mín. 8 caracteres)" error={errors.password}>
+      <Field id="password" label="Senha (mín. 8 caracteres)" error={errors["password"]}>
         <Input id="password" name="password" type="password" autoComplete="new-password" />
       </Field>
-      <Field id="confirm" label="Confirmar senha" error={errors.confirm}>
+      <Field id="confirm" label="Confirmar senha" error={errors["confirm"]}>
         <Input id="confirm" name="confirm" type="password" autoComplete="new-password" />
       </Field>
       <Button type="submit" className="w-full" size="lg" disabled={busy}>

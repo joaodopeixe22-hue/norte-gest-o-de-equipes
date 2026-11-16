@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_authenticated")({
     const me = await context.queryClient.ensureQueryData(meQuery);
     if (!me || !me.is_active) {
       await supabase.auth.signOut();
-      throw redirect({ to: "/auth", search: { inativo: "1" } as never });
+      throw redirect({ to: "/auth", search: { inativo: "1" } });
     }
   },
   component: AppShell,

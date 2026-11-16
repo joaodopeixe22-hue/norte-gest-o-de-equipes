@@ -82,10 +82,10 @@ export function EventDialog({ open, onOpenChange }: { open: boolean; onOpenChang
             <DialogTitle>Novo compromisso</DialogTitle>
             <DialogDescription>Reuniões, entregas, visitas — o que tem hora marcada.</DialogDescription>
           </DialogHeader>
-          <Field id="e-title" label="Título" error={errors.title}>
+          <Field id="e-title" label="Título" error={errors["title"]}>
             <Input id="e-title" name="title" autoFocus />
           </Field>
-          <Field id="e-date" label="Data" error={errors.date}>
+          <Field id="e-date" label="Data" error={errors["date"]}>
             <Input id="e-date" name="date" type="date" defaultValue={todaySP()} />
           </Field>
           <div className="flex items-center gap-2">
@@ -97,7 +97,7 @@ export function EventDialog({ open, onOpenChange }: { open: boolean; onOpenChang
               <Field id="e-start" label="Início">
                 <Input id="e-start" name="start" type="time" />
               </Field>
-              <Field id="e-end" label="Fim (opcional)" error={errors.end}>
+              <Field id="e-end" label="Fim (opcional)" error={errors["end"]}>
                 <Input id="e-end" name="end" type="time" />
               </Field>
             </div>

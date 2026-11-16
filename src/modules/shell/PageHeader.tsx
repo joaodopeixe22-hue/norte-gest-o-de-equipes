@@ -14,7 +14,7 @@ export function PageHeader({
 }: {
   crumbs: Crumb[];
   title: string;
-  description?: string;
+  description?: string | undefined;
   actions?: React.ReactNode;
 }) {
   return (
@@ -52,10 +52,10 @@ export function Section({
   className,
 }: {
   title: string;
-  description?: string;
+  description?: string | undefined;
   action?: React.ReactNode;
   children: React.ReactNode;
-  className?: string;
+  className?: string | undefined;
 }) {
   return (
     <section className={className} aria-label={title}>
