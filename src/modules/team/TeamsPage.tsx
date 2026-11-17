@@ -85,7 +85,7 @@ export function TeamsPage() {
           }
         />
       ) : (
-        <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] [&>*]:min-w-0">
           <div className="space-y-10">
             {managed.data!.teams.map((team) => {
               const members = managed.data!.people.filter((p) => p.team_id === team.id);

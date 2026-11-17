@@ -18,6 +18,12 @@ Projeto independente (não depende do app Gincana Farma). Interface em portuguê
 | **Meu Workspace** | próxima etapa | Páginas e subpáginas estilo Notion, editor rico, busca e favoritos |
 | Conquistas | próxima etapa | Marcos de constância e metas batidas |
 
+## No celular
+
+- Barra inferior com Home, Agenda, **Registrar** (botão central), Evolução (ou Equipes, para quem gerencia, com contador de pendências) e Mais.
+- Janelas abrem de baixo para cima, com botões na largura da tela; campos e botões têm pelo menos 44 px de altura.
+- Dá para instalar: no navegador do celular, "Adicionar à tela de início". Abre em tela cheia, com ícone próprio.
+
 ## Primeiro acesso
 
 1. Abra o app. Enquanto não existir administrador, a tela de login mostra **Configurar o Norte**: informe nome, matrícula e senha. Essa tela deixa de existir depois do primeiro administrador — faça isso assim que publicar.

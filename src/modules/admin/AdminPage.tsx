@@ -16,11 +16,19 @@ export function AdminPage() {
         description="Pessoas, equipes, indicadores e avisos. Comece criando as equipes e depois os usuários."
       />
       <Tabs defaultValue="usuarios">
-        <TabsList className="mb-8 max-w-full overflow-x-auto">
-          <TabsTrigger value="usuarios">Usuários</TabsTrigger>
-          <TabsTrigger value="equipes">Equipes</TabsTrigger>
-          <TabsTrigger value="indicadores">Indicadores e metas</TabsTrigger>
-          <TabsTrigger value="avisos">Avisos</TabsTrigger>
+        <TabsList className="mb-8 flex h-auto w-full justify-start overflow-x-auto md:inline-flex md:w-auto">
+          <TabsTrigger className="shrink-0 max-md:py-2" value="usuarios">
+            Usuários
+          </TabsTrigger>
+          <TabsTrigger className="shrink-0 max-md:py-2" value="equipes">
+            Equipes
+          </TabsTrigger>
+          <TabsTrigger className="shrink-0 max-md:py-2" value="indicadores">
+            Indicadores e metas
+          </TabsTrigger>
+          <TabsTrigger className="shrink-0 max-md:py-2" value="avisos">
+            Avisos
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="usuarios">
           <UsersTab />

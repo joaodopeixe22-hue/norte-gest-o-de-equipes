@@ -57,7 +57,7 @@ export function AppSidebar() {
                 const active = path === item.to || path.startsWith(item.to + "/");
                 return (
                   <SidebarMenuItem key={item.to}>
-                    <SidebarMenuButton asChild isActive={active} tooltip={item.title}>
+                    <SidebarMenuButton asChild isActive={active} tooltip={item.title} className="max-md:h-12 max-md:gap-3 max-md:px-3 max-md:text-base max-md:[&>svg]:size-5">
                       <Link to={item.to} onClick={() => setOpenMobile(false)}>
                         <item.icon strokeWidth={1.75} aria-hidden />
                         <span>{item.title}</span>

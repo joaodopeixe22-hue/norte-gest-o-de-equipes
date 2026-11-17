@@ -91,7 +91,7 @@ export function TeamsTab() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-8"
+                className="size-8 max-md:size-10"
                 aria-label={`Editar ${t.name}`}
                 onClick={() => setEditing(t)}
               >
@@ -100,7 +100,7 @@ export function TeamsTab() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-8 text-muted-foreground"
+                className="size-8 max-md:size-10 text-muted-foreground"
                 aria-label={`Excluir ${t.name}`}
                 onClick={() => setDeleting(t)}
               >

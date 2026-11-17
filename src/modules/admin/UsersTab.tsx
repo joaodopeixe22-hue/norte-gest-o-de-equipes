@@ -124,6 +124,7 @@ export function UsersTab() {
                 </p>
                 <p className="num truncate text-xs text-muted-foreground">
                   Matrícula {u.matricula} · {teamName(u.team_id) ?? "Sem equipe"}
+                  <span className="sm:hidden"> · {ROLE_LABEL[u.role]}</span>
                 </p>
               </div>
               {!u.is_active && (
@@ -145,7 +146,7 @@ export function UsersTab() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="size-8"
+                    className="size-8 max-md:size-10"
                     aria-label={`Ações de ${u.full_name || u.matricula}`}
                   >
                     <MoreHorizontal strokeWidth={1.75} />

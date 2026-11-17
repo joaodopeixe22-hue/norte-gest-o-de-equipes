@@ -45,7 +45,7 @@ const FILTERS: { value: TaskFilter; label: string; empty: string }[] = [
 ];
 
 const toggleItem =
-  "h-7 px-2.5 text-xs data-[state=on]:bg-primary-soft data-[state=on]:text-primary";
+  "h-7 px-2.5 text-xs max-md:h-9 max-md:px-3 max-md:text-sm data-[state=on]:bg-primary-soft data-[state=on]:text-primary";
 
 export function AgendaPage() {
   const me = useMe()!;
@@ -76,7 +76,7 @@ export function AgendaPage() {
         }
       />
 
-      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] [&>*]:min-w-0">
         <Section
           title="Tarefas"
           action={
@@ -111,7 +111,7 @@ export function AgendaPage() {
                 role="tab"
                 aria-selected={filter === f.value}
                 onClick={() => setFilter(f.value)}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors duration-150 ${
+                className={`rounded-full border px-3 py-1 text-xs font-medium max-md:px-3.5 max-md:py-2 max-md:text-sm transition-colors duration-150 ${
                   filter === f.value
                     ? "border-primary bg-primary-soft text-primary"
                     : "border-border text-muted-foreground hover:bg-muted"
@@ -165,7 +165,7 @@ export function AgendaPage() {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="size-7 shrink-0"
+                              className="size-7 max-md:size-10 shrink-0"
                               aria-label={`Ações de "${t.title}"`}
                             >
                               <MoreHorizontal strokeWidth={1.75} />
@@ -279,7 +279,7 @@ function UpcomingEvents() {
                       <Button
                         variant="ghost"
                         size="icon"
-                        className="size-7 shrink-0 text-muted-foreground"
+                        className="size-7 max-md:size-10 shrink-0 text-muted-foreground"
                         aria-label={`Excluir "${e.title}"`}
                         onClick={() => setDeleting({ id: e.id, title: e.title })}
                       >

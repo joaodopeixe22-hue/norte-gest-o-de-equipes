@@ -32,7 +32,7 @@ import { useLedger, useMyEntries } from "./hooks";
 type Range = "semana" | "mes";
 const HISTORY_DAYS = 30;
 const toggleItem =
-  "h-7 px-2.5 text-xs data-[state=on]:bg-primary-soft data-[state=on]:text-primary";
+  "h-7 px-2.5 text-xs max-md:h-9 max-md:px-3 max-md:text-sm data-[state=on]:bg-primary-soft data-[state=on]:text-primary";
 
 const STATUS = {
   approved: { label: "Aprovado", cls: "bg-primary-soft text-primary" },
@@ -118,7 +118,7 @@ export function PerformancePage() {
         />
       </dl>
 
-      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] [&>*]:min-w-0">
         <div className="space-y-10">
           <Section title="Metas por indicador" description={`Acumulado ${periodLabel}, até hoje`}>
             {progress.isLoading ? (
@@ -130,11 +130,13 @@ export function PerformancePage() {
                   return (
                     <li
                       key={k.kpi_id}
-                      className="grid grid-cols-[7rem_1fr_auto] items-center gap-4 py-3"
+                      className="grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-1.5 py-3 sm:grid-cols-[7rem_1fr_auto]"
                     >
                       <span className="text-sm font-semibold">{k.name}</span>
-                      <ProgressBar value={k.total} max={k.goal} />
-                      <span className="num w-28 text-right text-sm">
+                      <div className="max-sm:order-3 max-sm:col-span-2">
+                        <ProgressBar value={k.total} max={k.goal} />
+                      </div>
+                      <span className="num text-right text-sm sm:w-28">
                         <span className="font-bold">{k.total}</span>
                         <span className="text-muted-foreground"> / {k.goal}</span>
                         <span
@@ -266,7 +268,7 @@ function Evolution() {
           value={kpi}
           onValueChange={(v) => v && setKpi(v)}
           aria-label="Indicador"
-          className="flex-wrap justify-end rounded-lg border border-border bg-surface p-0.5"
+          className="justify-start rounded-lg border border-border bg-surface p-0.5 max-sm:w-full max-sm:overflow-x-auto sm:flex-wrap sm:justify-end"
         >
           <ToggleGroupItem value="todos" className={toggleItem}>
             Todos

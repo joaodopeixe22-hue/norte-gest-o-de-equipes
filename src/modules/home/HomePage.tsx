@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ProgressBar } from "@/modules/kpi/Sparkline";
 import { useMe } from "@/modules/auth/useMe";
 import { addDays, formatLongDate, formatShortDate, formatTimeSP, greeting, hourSP, startOfMonth, startOfWeek, todaySP } from "@/lib/dates";
 import { useKpiProgress } from "@/modules/kpi/hooks";
@@ -59,7 +60,7 @@ export function HomePage() {
       {/* Visão do dia */}
       <section aria-label="Visão do dia">
         <dl className="grid grid-cols-2 gap-x-4 gap-y-5 sm:gap-x-0 rounded-xl border border-border bg-surface px-5 py-4 shadow-soft sm:grid-cols-5 sm:divide-x sm:divide-border">
-          <Stat label="Meta do dia" value={dayKpi.isLoading ? null : `${goalPct}%`} hint="aprovado hoje" />
+          <Stat label="Meta do dia" value={dayKpi.isLoading ? null : `${goalPct}%`} hint="aprovado hoje" progress={goalPct} />
           <Stat label="Pontos no mês" value={summary.isLoading ? null : String(s?.month_points ?? 0)} />
           <Stat
             label="Ranking do mês"
@@ -87,7 +88,7 @@ export function HomePage() {
         </section>
       )}
 
-      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
+      <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr] [&>*]:min-w-0">
         <div className="space-y-10">
           <KpiSection />
           <Routine />
@@ -101,13 +102,34 @@ export function HomePage() {
   );
 }
 
-function Stat({ label, value, hint }: { label: string; value: string | null; hint?: string | undefined }) {
+function Stat({
+  label,
+  value,
+  hint,
+  progress,
+}: {
+  label: string;
+  value: string | null;
+  hint?: string | undefined;
+  /** 0–100. Quando informado, o número ocupa a linha inteira no celular, com barra de progresso. */
+  progress?: number;
+}) {
+  const wide = progress !== undefined;
   return (
-    <div className="px-0 sm:px-5 sm:first:pl-0">
+    <div className={`px-0 sm:px-5 sm:first:pl-0 ${wide ? "max-sm:col-span-2 max-sm:border-b max-sm:border-border max-sm:pb-4" : ""}`}>
       <dt className="eyebrow">{label}</dt>
-      <dd className="mt-1 flex items-baseline gap-1.5">
-        {value === null ? <Skeleton className="h-7 w-14" /> : <span className="num text-2xl font-bold">{value}</span>}
+      <dd className="mt-1 flex flex-wrap items-baseline gap-x-1.5">
+        {value === null ? (
+          <Skeleton className="h-7 w-14" />
+        ) : (
+          <span className={`num font-bold ${wide ? "text-3xl sm:text-2xl" : "text-2xl"}`}>{value}</span>
+        )}
         {hint && <span className="text-xs text-muted-foreground">{hint}</span>}
+        {wide && (
+          <div className="mt-2 basis-full sm:hidden">
+            <ProgressBar value={progress} max={100} />
+          </div>
+        )}
       </dd>
     </div>
   );

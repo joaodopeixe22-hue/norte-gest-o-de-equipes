@@ -26,7 +26,7 @@ export function TaskRow({
         aria-checked={done}
         aria-label={done ? `Reabrir "${task.title}"` : `Concluir "${task.title}"`}
         onClick={() => toggle.mutate(task, { onError: toastError })}
-        className={`mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-md border transition-colors duration-150 ${
+        className={`relative mt-0.5 flex size-5 shrink-0 after:absolute after:-inset-3 after:content-[''] max-md:size-6 items-center justify-center rounded-md border transition-colors duration-150 ${
           done ? "border-primary bg-primary text-primary-foreground" : "border-input bg-surface hover:border-primary"
         }`}
       >

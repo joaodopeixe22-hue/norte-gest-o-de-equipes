@@ -34,9 +34,9 @@ export function KpiSection() {
           aria-label="Período"
           className="rounded-lg border border-border bg-surface p-0.5"
         >
-          <ToggleGroupItem value="dia" className="h-7 px-2.5 text-xs data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Dia</ToggleGroupItem>
-          <ToggleGroupItem value="semana" className="h-7 px-2.5 text-xs data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Semana</ToggleGroupItem>
-          <ToggleGroupItem value="mes" className="h-7 px-2.5 text-xs data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Mês</ToggleGroupItem>
+          <ToggleGroupItem value="dia" className="h-7 px-2.5 text-xs max-md:h-9 max-md:px-3 max-md:text-sm data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Dia</ToggleGroupItem>
+          <ToggleGroupItem value="semana" className="h-7 px-2.5 text-xs max-md:h-9 max-md:px-3 max-md:text-sm data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Semana</ToggleGroupItem>
+          <ToggleGroupItem value="mes" className="h-7 px-2.5 text-xs max-md:h-9 max-md:px-3 max-md:text-sm data-[state=on]:bg-primary-soft data-[state=on]:text-primary">Mês</ToggleGroupItem>
         </ToggleGroup>
       }
     >
@@ -88,7 +88,7 @@ export function KpiSection() {
             })}
       </ul>
       <div className="mt-4">
-        <Button onClick={openRegisterKpi}>
+        <Button onClick={openRegisterKpi} className="max-sm:w-full">
           <PenLine strokeWidth={1.75} /> Registrar indicadores
         </Button>
       </div>

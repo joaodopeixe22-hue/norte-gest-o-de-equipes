@@ -285,7 +285,7 @@ function SpecificGoals() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-7 text-muted-foreground"
+                className="size-7 max-md:size-10 text-muted-foreground"
                 aria-label="Remover meta específica"
                 onClick={() =>
                   del.mutate(g.id, {

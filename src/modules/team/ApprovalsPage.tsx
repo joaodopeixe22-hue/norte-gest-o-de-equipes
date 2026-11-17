@@ -147,7 +147,7 @@ export function ApprovalsPage() {
           <ChevronLeft strokeWidth={1.75} />
         </Button>
         <p
-          className="min-w-44 text-center text-sm font-semibold first-letter:uppercase"
+          className="min-w-44 text-center text-sm font-semibold first-letter:uppercase max-sm:flex-1"
           aria-live="polite"
         >
           {formatLongDate(date)}
@@ -224,8 +224,11 @@ export function ApprovalsPage() {
                   const own = !canReview(e);
                   const changed = !!changedValues(e, edits);
                   return (
-                    <li key={e.id} className="py-4">
-                      <div className="flex flex-wrap items-center gap-3">
+                    <li
+                      key={e.id}
+                      className="grid gap-3 py-4 sm:grid-cols-[1fr_auto] sm:items-center"
+                    >
+                      <div className="flex min-w-0 items-center gap-3">
                         <UserAvatar
                           name={p?.full_name ?? "?"}
                           url={p?.avatar_url}
@@ -247,32 +250,28 @@ export function ApprovalsPage() {
                             {team ? `${team.name} · ` : ""}enviado às {formatTimeSP(e.submitted_at)}
                           </p>
                         </div>
-                        {own ? (
-                          <p className="text-xs text-muted-foreground">
-                            Seu registro precisa ser aprovado por outro gestor.
-                          </p>
-                        ) : (
-                          <div className="flex items-center gap-2">
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => setRejecting(e)}
-                              disabled={review.isPending}
-                            >
-                              <X strokeWidth={1.75} /> Recusar
-                            </Button>
-                            <Button
-                              size="sm"
-                              onClick={() => approve(e)}
-                              disabled={review.isPending}
-                            >
-                              <Check strokeWidth={1.75} />{" "}
-                              {changed ? "Aprovar com ajuste" : "Aprovar"}
-                            </Button>
-                          </div>
-                        )}
                       </div>
-                      <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                      {own ? (
+                        <p className="text-xs text-muted-foreground max-sm:order-3">
+                          Seu registro precisa ser aprovado por outro gestor.
+                        </p>
+                      ) : (
+                        <div className="flex items-center gap-2 max-sm:order-3 max-sm:grid max-sm:grid-cols-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setRejecting(e)}
+                            disabled={review.isPending}
+                          >
+                            <X strokeWidth={1.75} /> Recusar
+                          </Button>
+                          <Button size="sm" onClick={() => approve(e)} disabled={review.isPending}>
+                            <Check strokeWidth={1.75} />{" "}
+                            {changed ? "Aprovar com ajuste" : "Aprovar"}
+                          </Button>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-2 gap-3 sm:col-span-2 sm:grid-cols-4">
                         {kpis.data.map((k) => {
                           const v = e.daily_entry_values.find((x) => x.kpi_id === k.id);
                           const current = edits[e.id]?.[k.id] ?? v?.value ?? 0;
@@ -301,7 +300,7 @@ export function ApprovalsPage() {
                                     ),
                                   )
                                 }
-                                className={`num mt-1 h-9 w-full rounded-lg border bg-surface px-3 text-sm font-semibold outline-none transition-colors focus-visible:border-primary disabled:opacity-60 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${
+                                className={`num mt-1 h-9 w-full max-md:h-11 max-md:text-base rounded-lg border bg-surface px-3 text-sm font-semibold outline-none transition-colors focus-visible:border-primary disabled:opacity-60 [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none ${
                                   edited ? "border-warning" : "border-input"
                                 }`}
                               />

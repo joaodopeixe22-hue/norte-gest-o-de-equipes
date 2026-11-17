@@ -123,6 +123,21 @@
   }
 }
 
+/* Celular: sem zoom automático ao focar campos (iOS amplia abaixo de 16px) e sem flash azul ao tocar. */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (max-width: 767px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+}
+
 @utility num {
   font-variant-numeric: tabular-nums;
 }

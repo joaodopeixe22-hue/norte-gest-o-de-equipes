@@ -110,7 +110,7 @@ export function AnnouncementsManager({ teams }: { teams: Team[] }) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="size-7"
+                  className="size-7 max-md:size-10"
                   aria-label={`Editar "${a.title}"`}
                   onClick={() => setEditing(a)}
                 >
@@ -119,7 +119,7 @@ export function AnnouncementsManager({ teams }: { teams: Team[] }) {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="size-7 text-muted-foreground"
+                  className="size-7 max-md:size-10 text-muted-foreground"
                   aria-label={`Excluir "${a.title}"`}
                   onClick={() => setDeleting(a)}
                 >

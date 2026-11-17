@@ -70,7 +70,7 @@ export function RegisterKpiDialog({ open, onOpenChange }: { open: boolean; onOpe
                 role="radio"
                 aria-checked={date === d}
                 onClick={() => setDate(d)}
-                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                className={`rounded-full border px-3 py-1 text-xs font-medium max-md:px-3.5 max-md:py-2 max-md:text-sm transition-colors ${
                   date === d ? "border-primary bg-primary-soft text-primary" : "border-border text-muted-foreground hover:bg-muted"
                 }`}
               >
